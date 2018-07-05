@@ -1,0 +1,64 @@
+body {
+    font-family: "Times New Roman", "Roboto",
+      "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+    font-size: 1em;
+
+  }
+
+.etf_calc_overview {
+   width: 800px;
+   margin-left: auto;
+   margin-right: auto;
+   border: 3px solid;
+   font-size: 1.1em;
+}
+
+.center_tight{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;  
+}
+
+.italicize {
+     font-style: italic;
+}
+
+.centerize {
+    text-align: center;
+}
+
+.enbolden {
+  text-decoration: underline;
+  font-weight: bold;   
+  text-align: center;
+}
+
+.answers {
+  margin-left: 10%;
+}
+
+.output_cost{
+  text-decoration: underline;
+  text-align: right;
+  float: right;
+  padding-right: 100px;
+}
+
+.box_it {
+  border: 1px solid;
+  display: inline-block;
+  text-align: center;
+  width: 120px; 
+  margin: auto;
+}
+
+t {
+    background-color:#f6931e;
+    animation-name: color_highlight;
+    animation-duration: 1s;    
+}
+
+@keyframes color_highlight {
+    from {background-color: #33ccff;}
+    to {background-color: #f6931e;}
+}
