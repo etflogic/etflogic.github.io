@@ -18,12 +18,10 @@ function formatPercent(num,precision) {
 
 function showhide(id,shouldShow) {
 	var e = document.getElementById(id);
-	//e.style.display = (e.style.display == 'block') ? 'none' : 'block';
 	e.style.display = (!shouldShow) ? 'none' : 'block';
 };
 
 function addTradingInfoHtml(){
-
   let tradingInfoHtml = ` 	
 
   	     <div class="etf_calc_overview">
@@ -115,7 +113,6 @@ function addTradingInfoHtml(){
 };
 
 function doCalc(){
-	//showhide("etf_calc_info",false);
 
 	document.getElementById('etf_calc_info').innerHTML = ``;
 	var ticker = document.getElementById('input_ticker').value.trim().toUpperCase();
@@ -138,10 +135,8 @@ function doCalc(){
 	}
 
 	var spreadData = getSpreads(ticker);
-	//console.log("show: " + JSON.stringify(spreadData));
 	if("ba_median" in spreadData){
 		document.getElementById('error_message').innerHTML = ``;
-		//showhide("etf_calc_info",true);
 		addTradingInfoHtml();
 	}
 	else{
