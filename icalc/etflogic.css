@@ -55,7 +55,7 @@ body {
 t {
     background-color:#f6931e;
     animation-name: color_highlight;
-    animation-duration: 1s;    
+    animation-duration: 5s;    
 }
 
 @keyframes color_highlight {
