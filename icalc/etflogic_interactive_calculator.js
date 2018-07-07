@@ -161,12 +161,12 @@ function doCalc(){
 
 
 	document.getElementById('output_cost_mid').innerHTML 
-		= `${formatCurrency(spreadData.ba_midrange*input_trade_size*2,2)}`;
+		= `${formatCurrency(spreadData.ba_midrange*input_trade_size,2)}`;
 	document.getElementById('output_cost_high').innerHTML 
 		= `${formatCurrency(spreadData.ba_p95*input_trade_size*2,2)}`;
 
 	document.getElementById('output_cost_rt_mid').innerHTML 
-		= `${formatCurrency(spreadData.ba_midrange*input_trade_size*2*input_roundtrips,2)}`;
+		= `${formatCurrency(spreadData.ba_midrange*input_trade_size*input_roundtrips,2)}`;
 	document.getElementById('output_cost_rt_high').innerHTML 
 		= `${formatCurrency(spreadData.ba_p95*input_trade_size*2*input_roundtrips,2)}`;
 
