@@ -1,41 +1,26 @@
 
 function updateDetailBoxes(data){
 
-  let html = `
-
-        <div class="row">
-
+  // insert layout
+  let html = '';
+  for(var i = 0; i<data.box_keys.length; i++ ) {
+    html += `
           <div class="col-md-6 col-sm-6 mb-4">
-            <div id="box-1"></div>
+            <div id="${data.box_keys[i]}"></div>
           </div>
+          `;
+  };
+  document.getElementById('detail_boxes').innerHTML  = '<div class="row">' + html + '</div>';
 
-          <div class="col-md-6 col-sm-6 mb-4">
-             <div id="box-2"></div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6 col-sm-6 mb-4">
-             <div id="box-3"></div>
-         </div>
-
-          <div class="col-md-6 col-sm-6 mb-4">
-             <div id="box-4"></div>
-          </div>
-
-        </div>
-        `;
-  document.getElementById('detail_boxes').innerHTML  = html;
- 
-  updateBoxData(data['holdings'], 1);
-  updateBoxData(data['sector'],   2);
-  updateBoxData(data['country'],  3);
-  updateBoxData(data['factor'],   4);
+  // insert individual items in layout
+  for(var i = 0; i<data.box_keys.length; i++ ) {
+    insertItem(data[data.box_keys[i]], data.box_keys[i]);
+  }
 
  };
 
 
-function updateBoxData(data,box_num){
+function generateTableHtml(data){
 
 
   let tableHeaderCols = data.table_description.map(item => {
@@ -74,47 +59,68 @@ function updateBoxData(data,box_num){
   }).join('');
 
   let html = `
-    <h3 class="my-4">${data.table_name}</h3>
+    <h3 class="my-4">
+      <i class="fas ${data.icon} fa-2x"></i>
+        ${data.box_name}
+    </h3>
      <div class="detailed_box">
-      <table class="sortable" id="table-item-${box_num}">${tableHeaderHtml}<tbody>${tableBodyHtml}</tbody></table>
+      <table class="sortable" id="table-item-${data.box_name}">${tableHeaderHtml}<tbody>${tableBodyHtml}</tbody></table>
     </div>  
  `;
 
-  document.getElementById('box-'+box_num).innerHTML  = html;
+  return html;
 };
 
 
-function updateEtfHighlights(data){
-  let html = `
-    <ul>
-      <li>${data.peer_group_suggestion}</li>
-      <li>Fund Start Date: ${data.inceptiondate}</li>
-      <li>Expense Ratio: ${formatPercent(data.expenseratio/100,3)}</li>
-    <ul>
-  `;
-  document.getElementById('etf_highlights').innerHTML  = html;
+// value is 3-item list  (key, value, value formatter)
+function formatValue(value){
+  if(value[2]==="")
+      return value[1];
+  else {
+    return eval(value[2])(value[1]);
+  }
 }
 
-function updateEtfDescription(data){
+function generateInfoHtml(data){
   let html = `
-    <ul>
-      <li>Issuer: ${data.issuer}</li>
-      <li>Fund Type: ${data.fund_typ}</li>
-      <li>Asset Class: ${data.assetclass}</li>
-      <li>Geography: ${data.geography}</li>
-      <li>Strategy: ${data.strategy}</li>
-      <li>AUM: $${formatNumberToWords(data.aum)}</li>
-    <ul>
-  `;
-  document.getElementById('etf_description').innerHTML  = html;
+    <h3 class="my-4">
+      <i class="fas ${data.icon} fa-2x"></i>
+        ${data.box_name}
+    </h3>
+    `;
+
+  let list = ``;
+  for (var i = 0; i<data.payload.length;i++){
+    list += `
+      <li>
+        <div class='info_key'>${data.payload[i][0]}</div>
+        <div class='info_value'>${formatValue(data.payload[i])}</div>
+      </li>`
+  }
+  html += "<ul>" + list + "</ul>";
+  return html;
 }
+
+function insertItem(data,id){
+
+  let html = ``;
+  if(data.box_type==='info'){
+    html = generateInfoHtml(data);
+  }
+  else if(data.box_type==='table'){
+    html = generateTableHtml(data);
+  } 
+  var loc = document.getElementById(id);
+  if(loc) 
+    loc.innerHTML  = html;
+}
+
 
 function updateDelayedData(){
 
   let url = 'https://api.iextrading.com/1.0/stock/'+globalTicker+'/quote';
 
   fetch(url).then(response => response.json()).then(json => {
-   //console.log("We got data: " + JSON.stringify(json));
 
     let delayedPrice = `
       <div class='inner_delayed_price' id='inner_delayed_price'>
@@ -148,58 +154,10 @@ function updateDelayedData(){
 
 let globalTicker = null;
 
-function formatChange(num,precision) {
-  return (num>0? '+':'-')+num.toFixed(precision);
-}
-
-function formatQuote(value) {
-  let options = {
-    'minimumFractionDigits': 2,
-    'style': 'currency',
-    'currency': 'USD'
-  };
-  return value.toLocaleString('en', options);
-}
-
-function formatPercent(num,precision) {
-  return (num* 100).toFixed(precision) + '%';
-}
-
-function formatPercentSigned(num,precision) {
-  return (num>0? '+':'')+(num* 100).toFixed(precision) + '%';
-}
-
-function formatNumberToWords(marketCap) {
-  let value, suffix;
-  if (marketCap >= 1e12) {
-    value = marketCap / 1e12;
-    suffix = 'T';
-  } else if (marketCap >= 1e9) {
-    value = marketCap / 1e9;
-    suffix = 'B';
-  } else if (marketCap >= 1e6) {
-    value = marketCap / 1e6;
-    suffix = 'M';
-  } else if (marketCap >= 1e3) {
-    value = marketCap / 1e3;
-    suffix = 'K';
-  } else {
-    value = marketCap;
-    suffix = '';
-  }
-
-  let digits = value < 10 ? 1 : 0;
-
-  if(!value) return value; // return null 
-
-  return value.toFixed(digits) + suffix;
-}
-
-
 function addData(data){
-      insertGridLayout(data.parent[0]);
-      updateChartData(data.parent[0].ticker); 
-      globalTicker = data.parent[0].ticker;
+      insertGridLayout(data);
+      updateChartData(data.etf_ticker); 
+      globalTicker = data.etf_ticker;
 
       updateDetailBoxes(data);
       updateDelayedData();
@@ -261,21 +219,24 @@ function drawChart() {
 }
 
 
-
-
 function insertGridLayout(data){
 
   let mainItems = `
 
       <div class="row">
        <div class="col-md-8">
-          <h1 class="my-4">${data.ticker}
-            <small>${data.fund}</small>
+          <h1 class="my-4">${data.etf_ticker}
+            <small>${data.etf_name}</small>
           </h1>
+
+         <div class="col-md-4">
+           <div class="outer_delayed_price" id="outer_delayed_price"></div>
+         </div>
+
        </div>
-       <div class="col-md-4">
-         <div class="outer_delayed_price" id="outer_delayed_price"></div>
-       </div>
+       <div class="powered">
+        Powered By <img src="http://www.etflogic.io/wp-content/uploads/2017/05/etflogiclogo-1.png" height="50" />
+        </div>       
       </div>
 
       <div class="row">
@@ -285,10 +246,8 @@ function insertGridLayout(data){
         </div>
 
         <div class="col-md-4">
-          <h3 class="my-3">ETF Overview</h3>
-          <div id="etf_description"></div>
-          <h3 class="my-3">ETF Details</h3>
-          <div id="etf_highlights"></div>
+          <div id="info1"></div>
+          <div id="info2"></div>
         </div>
 
       </div>
@@ -297,16 +256,14 @@ function insertGridLayout(data){
 
       <div class="row>
        <div class="col-md-12">
-       <div class="powered">
-        Powered By <img src="http://www.etflogic.io/wp-content/uploads/2017/05/etflogiclogo-1.png" height="50" />
-        </div>
+
        </div>
       </div>
 
       `;
     document.getElementById('main_section').innerHTML  = mainItems;
-    updateEtfDescription(data);
-    updateEtfHighlights(data);
+    insertItem(data['info1'],'info1');
+    insertItem(data['info2'],'info2');
 
  };
 
