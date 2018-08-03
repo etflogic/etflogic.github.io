@@ -81,6 +81,18 @@ function formatValue(value){
   }
 }
 
+function wrapTextInTooltip(text, tooltip){
+  if(tooltip === undefined || tooltip === "")
+      return text;
+  else {
+    return `
+      <a href="#" data-toggle="tooltip" title="${tooltip}">
+        ${text}
+      </a>
+      `;
+    }
+}
+
 function generateInfoHtml(data){
   let html = `
     <h3 class="my-4">
@@ -92,10 +104,10 @@ function generateInfoHtml(data){
   let list = ``;
   for (var i = 0; i<data.payload.length;i++){
     list += `
-      <li>
-        <div class='info_key'>${data.payload[i][0]}</div>
-        <div class='info_value'>${formatValue(data.payload[i])}</div>
-      </li>`
+      <div>
+        <span class='info_key'>${wrapTextInTooltip(data.payload[i][0],data.payload[i][3])}</span>
+        <span class='info_value'>${formatValue(data.payload[i])}</span>
+      </div>`
   }
   html += "<ul>" + list + "</ul>";
   return html;
