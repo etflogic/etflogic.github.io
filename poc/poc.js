@@ -260,7 +260,7 @@ function insertGridLayout(data) {
     </div>
 
     <div class="col-md-4 powered">
-      Powered By &nbsp; <img src="http://www.etflogic.io/wp-content/uploads/2017/05/etflogiclogo-1.png" height="50">
+      Powered By &nbsp; <img src="images/etflogic_logo.png" height="50">
     </div>
   </div>
   <div class="row mb-4">
