@@ -366,7 +366,7 @@ function tickerSearchInit(){
 
   $('#remote .typeahead').bind('typeahead:selected', function (obj, datum, name) {
     console.log(datum)
-  	window.location = '/web/?ticker=' + datum.value;
+  	window.location = '/poc/?ticker=' + datum.value;
   });
 
   tickerSearch.initialize();
