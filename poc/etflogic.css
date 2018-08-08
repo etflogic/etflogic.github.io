@@ -86,6 +86,12 @@ div#main_chart {
   padding-left: 10px;
   background-color: #fff;
   height: 100%;
+  width: 100%;
+  display: table;
+}
+div#main_chart > div {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 div.details,
@@ -280,7 +286,9 @@ ul li {
   .container {
     max-width: 720px;
   }
-
+  .twitter-typeahead {
+    margin: 0 12px !important;
+  }
   .col-sm-6 {
     flex: 0 0 100%;
     max-width: 100%;
@@ -295,69 +303,11 @@ ul li {
 svg {
     color: white;
 }
-
-.fa-money-check-alt {
-    background: #146392;
-    -webkit-mask: url(images/money-check-solid.svg) center / contain no-repeat;
-    width: 29px;
-    height: 29px;
-    margin-right: 10px;
+.fa {
+  color: #146392;
+  font-size: 25px;
+  margin-right: 12px;
 }
-
-.fa-industry {
-    background: #146392;
-    -webkit-mask: url(images/industry-solid.svg) center / contain no-repeat;
-    width: 29px;
-    height: 29px;
-    margin-right: 10px;
-}
-
-.fa-plus-circle {
-    background: #146392;
-    -webkit-mask: url(images/plus-circle-solid.svg) center / contain no-repeat;
-    width: 29px;
-    height: 29px;
-    margin-right: 10px;
-}
-
-.fa-globe-americas {
-    background: #146392;
-    -webkit-mask: url(images/globe-americas-solid.svg) center / contain no-repeat;
-    width: 29px;
-    height: 29px;
-    margin-right: 10px;
-}
-.fa-shopping-basket {
-  background: #146392;
-  -webkit-mask: url(images/shopping-basket-solid.svg) center / contain no-repeat;
-  width: 29px;
-  height: 29px;
-  margin-right: 10px;
-}
-.fa-asterisk {
-  background: #146392;
-  -webkit-mask: url(images/asterisk-solid.svg) center / contain no-repeat;
-  width: 29px;
-  height: 29px;
-  margin-right: 10px;
-}
-
-.fa-cog {
-    background: #146392;
-    -webkit-mask: url(images/cog-solid.svg) center / contain no-repeat;
-    width: 29px;
-    height: 29px;
-    margin-right: 10px;
-}
-
-.fa-info {
-    background: #146392;
-    -webkit-mask: url(images/info-solid.svg) center / contain no-repeat;
-    width: 29px;
-    height: 29px;
-    margin-right: 10px;
-}
-
 .table.table-hover th,
 .table.table-hover td {
   padding: 0;
@@ -378,20 +328,38 @@ svg {
 }
 
 .typeahead, .tt-query, .tt-hint {
-    border: 2px solid #CCCCCC;
-    border-radius: 8px 8px 8px 8px;
-    font-size: 24px;
-    height: 30px;
-    line-height: 30px;
+    border: 1px solid #ccc;
+    font-size: 22px;
+    height: 40px;
     outline: medium none;
     padding: 8px 12px;
-    width: 396px;
+    width: 100%;
+    margin: 12px 0;
+    font-weight: 200;
+}
+.tt-menu {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  margin-top: -13px;
+  width: 100%;
+}
+.tt-dataset .tt-suggestion {
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+.tt-dataset .tt-suggestion:hover {
+  background-color: #cccccc61;
+}
+.twitter-typeahead {
+  max-width: 600px;
+  margin: 0 auto;
+  display: block !important;
 }
 .typeahead {
-    background-color: #FFFFFF;
+  background-color: #FFFFFF;
 }
 .typeahead:focus {
-    border: 2px solid #0097CF;
+  border: 1px solid #ccc;
 }
 .tt-query {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
@@ -402,7 +370,6 @@ svg {
 .tt-dropdown-menu {
     background-color: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 8px 8px 8px 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     margin-top: 12px;
     padding: 8px 0;
@@ -419,4 +386,7 @@ svg {
 }
 .tt-suggestion p {
     margin: 0;
+}
+.row.remove-margin {
+  margin: 0 -30px;
 }

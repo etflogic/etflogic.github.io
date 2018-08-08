@@ -59,7 +59,7 @@ function generateTableHtml(data) {
     let html = `
   <div class="outer-box">
               <div class="title">
-                <div class="${data.icon}"></div>
+                <div class="fa ${data.icon}"></div>
                 <h3>${data.box_name}</h3>
               </div>
               <table class="sortable" id="table-item-${data.box_name}">
@@ -105,7 +105,7 @@ function generateInfoHtml(data) {
     let html = `
     <div class="outer-box">
                 <div class="title title-top">
-                  <div class="${data.icon}"></div>
+                  <div class="fa ${data.icon}"></div>
                   <h3>${data.box_name}</h3>
                 </div>
                 <table class="table table-hover">
@@ -164,7 +164,7 @@ function updateDelayedData() {
             divItem.innerHTML = delayedPrice;
 
             divItem = document.getElementById("colored_numbers");
-            let rgbColor = json.changePercent > 0 ? "0,255,0" : "255,0,0";
+            let rgbColor = json.changePercent > 0 ? "76, 175, 80" : "255,0,0";
             divItem.setAttribute("style", `color: rgba(${rgbColor}, 1)`);
         });
 }
@@ -251,7 +251,7 @@ function drawChart() {
 
 function insertGridLayout(data) {
     let mainItems = `
-  <div class="row row-eq-height">
+  <div class="row row-eq-height remove-margin">
     <div class="col-md-8">
       <h1>${data.etf_ticker}
         <small>${data.etf_name}</small>
@@ -260,31 +260,33 @@ function insertGridLayout(data) {
     </div>
 
     <div class="col-md-4 powered">
-      Powered By &nbsp; <img src="images/etflogic_logo.png" height="50">
+      Powered By &nbsp; <img src="etflogic_logo.png" height="50">
     </div>
   </div>
-  <div class="row mb-4">
-    <div class="col-md-8">
-      <div id="main_chart"></div>
-    </div>
-    <div class="col-md-4">
-      <div id="info1">
-        <div class="title title-top">
-          <div class="icon-info"></div>
-          <h3>ETF Overview</h3>
-        </div>
-        <div id="etf_description"></div>
+
+  <div class="row mb-4 remove-margin">
+      <div class="col-md-8">
+        <div id="main_chart"></div>
       </div>
-      <br />
-      <div id="info2">
-        <div class="title title-top">
-          <div class="icon-cog"></div>
-          <h3>ETF Details</h3>
+      <div class="col-md-4">
+        <div id="info1">
+          <div class="title title-top">
+            <div class="fa icon-info"></div>
+            <h3>ETF Overview</h3>
+          </div>
+          <div id="etf_description"></div>
         </div>
-        <div id="etf_highlights"></div>
+        <br />
+        <div id="info2">
+          <div class="title title-top">
+            <div class="fa icon-cog"></div>
+            <h3>ETF Details</h3>
+          </div>
+          <div id="etf_highlights"></div>
+        </div>
       </div>
-    </div>
   </div>
+
   <div class="row row-eq-height" id="detail_boxes"></div>
       `;
     document.getElementById("main_section").innerHTML = mainItems;
@@ -362,7 +364,12 @@ function tickerSearchInit(){
       source: tickerSearch
   });
 
-  tickerSearch.initialize();  
+  $('#remote .typeahead').bind('typeahead:selected', function (obj, datum, name) {
+    console.log(datum)
+  	window.location = '/web/?ticker=' + datum.value;
+  });
+
+  tickerSearch.initialize();
 
 }
 
