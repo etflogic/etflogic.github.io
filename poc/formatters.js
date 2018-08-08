@@ -1,5 +1,5 @@
 function formatChange(num, precision) {
-  return (num > 0 ? "+" : "-") + num.toFixed(precision);
+  return (num > 0 ? "+" : "") + num.toFixed(precision);
 }
 
 function formatQuote(value) {
