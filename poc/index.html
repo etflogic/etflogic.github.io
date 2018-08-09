@@ -35,6 +35,7 @@
 
 
   <script>
+    $('#remote .typeahead').attr('placeholder', 'TICKER - ' + window.location.search.split('=').pop())
     google.charts.load('current', {'packages':['line', 'corechart', 'bar']});
     let chartData = [];
     loadPageDetails();
