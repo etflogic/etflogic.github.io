@@ -1,6 +1,6 @@
-<!-- _coverpage.md -->
+<!-- coverpage.md -->
 
-![logo](_media/logo.svg)
+![logo](media/logo.svg)
 
 > The ETF technology company.
 
