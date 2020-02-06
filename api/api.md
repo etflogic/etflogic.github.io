@@ -74,7 +74,7 @@ The median spread calculation is provided using the calculation specified per re
 | `p95` | Float | 95th Percentile Spread | 95% of spreads are equal to or tighter than this number. |
 
 * Spread numbers (`median_spread` and `pXX` percentile spreads) are ratios. For example, a returned number of 0.00091 would be formatted as 0.091% or 9.1bps.
-
+* Please refer to the [SEC Final Rule](https://www.sec.gov/rules/final/2019/33-10695.pdf) for the definition of the `median_spread` calculation on page 109, footnote #369. The ETFLogic methdology document, available upon request, provides further details and clarity on this calculation.
 
 #### Examples
 

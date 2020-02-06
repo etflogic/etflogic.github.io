@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+SITEMAP: https://sandbox.etflogic.io/sitemap.xml
