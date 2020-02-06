@@ -10,14 +10,14 @@ This data is also provided in flat-file format for delivery (push or pull) via S
 
 Please contact the team for detailed documentation on the methodology, calculations and data sources.
 
-## API Server and Details
+## API Server
 
 * The Data API is RESTful and available over the internet.
 * Hostname: https://data.etflogic.io/
 * Stages
   * `test`, available via https://data.etflogic.io/test/
   * `prod`, available via https://data.etflogic.io/prod/
-
+* API Keys must be provisioned manually by the ETFLogic `engineering` team. Keys are unique to the client and permission you for specific endpoints, history and ticker universe.
 
 ## Endpoints
 The following endpoints are provided by the data API:
@@ -27,6 +27,7 @@ The following endpoints are provided by the data API:
 The median spread calculation is provided using the calculation specified per regulatory requirements.
 
 #### Overview
+> Quick Start: Make a call to `https://data.etflogic.io/test/spreads?apikey=<YourAPIKey>`
 * HTTP Method supported: GET
 
 #### Query Parameters
