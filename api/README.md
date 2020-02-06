@@ -8,4 +8,5 @@
 
 ## Contact
 
-* Please contact either `sales` or `engineering` at etflogic.io 
+* Email us on `sales` or `engineering` at etflogic.io 
+* Chat us using the Intercom app at the bottom right of this page, and we will respond! 

@@ -6,7 +6,7 @@ This documentation serves to outline the features of a portion of ETFLogic's dat
 
 ## Methodology
 
-* Please contact the team for detailed documentation on the methodology, calculations and data sources. 
+Please contact the team for detailed documentation on the methodology, calculations and data sources. 
 
 ## API Server and Details
 
