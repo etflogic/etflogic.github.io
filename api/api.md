@@ -57,6 +57,9 @@ The median spread calculation is provided using the calculation specified per re
    * Options:
      1. `spreads`
      1. `options`
+1. `ticker`
+   * Optional
+   * Description: You can override the default ticker list by passing in a comma-delimited list of US tickers. The default ticker list will typically be tied to a particular ETF Issuer. 
 
 #### Field Definitions
 
@@ -149,4 +152,5 @@ Some errors will return JSON with HTTP code 200. A sample error payload:
 
 ## Change List
 
+* 2020.04.30 - Added ticker support
 * 2020.02.06 - Added CSV support
