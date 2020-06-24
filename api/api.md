@@ -127,7 +127,6 @@ Returns available options
 
 ## Examples
 
-You may [download an example Excel worksheet](ETFLogic_Data_API_Caller.xls ':ignore') with API calls here.
 
 
 These examples use the `wget` command line tool to make requests to the API.
