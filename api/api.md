@@ -242,8 +242,25 @@ Returns percentile and 6c-11 spread calculations for the permissioned tickers.
 
 
 ### /?function=total-return
+
+Returns a time-series of adjusted price and NAV returns, including a growth of $10k return. Please note that time-series generally start around 2007.01 in our database.
+
+> Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=performance`
+
+
 ### /?function=basket-exposures
+
+Returns holdings statistics aggregated across many dimensions such as sector, geography, credit and maturity exposures. 
+
+> Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=basket-exposures`
+
+
 ### /?function=premium-discount-statistics
+
+Returns quarterly and yearly premium-discount statistics per 6c-11 requirements. Leverages the `function=premium-discount` time-series for its underlying data.
+
+> Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=premium-discount-statistics`
+
 
 ## Examples
 
