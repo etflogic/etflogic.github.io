@@ -205,7 +205,7 @@ Returns standardized performance calculations across various time periods with T
 Returns ETF AUM and flows for the permissioned tickers.
 > Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=flows`
 
-* Example call with `format=csv` and default lookback date changed using `date_gteq=YYYY.MM.DD` query parameter: `https://data.etflogic.io/test?apikey=e8431f3b-ffde-41de-a28d-aabaf138e1ea&function=flows&format=csv&date_gteq=2010.01.01`
+* Example call with `format=csv` and default lookback date changed using `date_gteq=YYYY.MM.DD` query parameter: `https://data.etflogic.io/test?apikey=<YourAPIKey>&function=flows&format=csv&date_gteq=2010.01.01`
 
 
 ### /?function=premium-discount
