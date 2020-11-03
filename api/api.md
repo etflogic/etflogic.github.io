@@ -154,7 +154,7 @@ The `function=overview` provides the latest information available for each data 
 | pd_min_discount_dollars                        | -0.051491                       | float     | Premium and Discount Quarter-End Statistics             |
 | pd_days_within_0_to_50bps                      | 35                              | float     | Premium and Discount Quarter-End Statistics             |
 | pd_days_within_0_to_neg50bps                   | 29                              | float     | Premium and Discount Quarter-End Statistics             |
-| ts                                             | 2020-11-03T05:35:21.236659Z     | timestamp | Database Update Timestamp                               |
+| ts                                             | 2020-01-03 05:35:21.236659Z     | timestamp | Database Update Timestamp                               |
 | close_daily_change                             | 0.34                            | float     |                                                         |
 | nav_daily_change                               | 0.465168                        | float     |                                                         |
 | fundamentals_return_on_equity                  |                                 | float     |                                                         |
