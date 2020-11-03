@@ -192,8 +192,8 @@ Returns holdings for ETFs if available and permissioned. Extra permissions must 
 
 ### /?function=distribution
 
-Returns a wide range of datapoints and statistics for the permissioned tickers. 
-> Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=overview`
+Returns historical dividend distributions along with ex-date and identification of long-term, short-term capital gains, amongst other items.  
+> Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=distribution`
 
 ### /?function=performance
 
