@@ -328,7 +328,7 @@ Some errors will return JSON with HTTP code 200. A sample error payload:
 * [/spreads](spreads-deprecated.md "Spreads API Endpoint (deprecated)")
 
 ## Change List
-
+* 2021.02.19 - Modifications to `function=flow` to behave similar to other functions when `date` or `date_gteq` are passed in. 
 * 2020.06.20 - Added multiple `function=<FUNCTION NAME` support for ETF overview, holdings, distributions, performance, flows, premium-discount, spreads, total-return and basket-exposures. 
 * The /spreads endpoint was deprecated
 * 2020.04.30 - Added ticker support
