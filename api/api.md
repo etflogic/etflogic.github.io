@@ -61,13 +61,13 @@ The following query parameters apply to all `function=<FUNCTION_NAME>` calls:
 1. `date`
    * Optional
    * Format is `YYYY-MM-DD`
-   * Dsecription: The as-of date of the returned data. 
+   * Description: The as-of date of the returned data. 
    * Default: `date=<last available date>`, typically T-1
    * Functions: flows, premium-discount, spreads, total-return
 1. `date_gteq`
    * Optional
    * Format is `YYYY-MM-DD`
-   * Dsecription: The minimum date returned in a time-series request.
+   * Description: The minimum date returned in a time-series request.
    * Functions: flows, premium-discount, spreads, total-return
 1. `fields`
    * Optional
