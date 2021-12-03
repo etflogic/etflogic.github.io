@@ -266,24 +266,26 @@ Returns quarterly and yearly premium-discount statistics per 6c-11 requirements.
 Spread threshold checks provide monitoring around spread widening for individual ETFs. Monitoring is conducted as of the previous trading day and the previous quarter. 
 There have been multiple interpretations of the legal text of the threshold checks which has resulted in multiple calculations. We explain the fields the function returns below. 
 
+All spreads are 
+
 | Field Key | Format | Example | Description |
 | -- | -- | -- | -- |
-| ticker| text | NGE | |
-| asof_date| YYYY-MM-DD date | 2021-12-02 ||
-| spread_lookback_15d_flag| boolean | false ||
-| spread_lookback_15d_gteq1pct_count| integer | 4 ||
-| spread_lookback_15d_tradeday_count| integer | 11 ||
-| spread_lookback_3m_flag| boolean | true ||
-| spread_lookback_3m_gteq1pct_count| integer | 35 ||
-| spread_lookback_3m_start_date|  YYYY-MM-DD date | 2021-09-07 ||
-| spread_lookback_3m_tradeday_count| integer | 62 ||
-| spread_lookback_prev_quarter_count| integer | 64 ||
-| spread_lookback_prev_quarter_gteq1pct_count| integer | 27.0 ||
-| spread_lookback_prev_quarter_gteq1pct_streak_count| integer | 4.0 ||
-| spread_lookback_prev_quarter_gteq2pct_count| integer | 2.0 ||
-| spread_lookback_prev_quarter_last_date| YYYY-MM-DD date | 2021-09-30 ||
-| spread_lookback_prev_quarter_wide_spread_2pct_flag| boolean | true ||
-| spread_lookback_prev_quarter_wide_spread_persist_flag| boolean | false ||
+| ticker| text | XYZ | The exchange listing ticker |
+| asof_date | YYYY-MM-DD date | 2021-12-02 |The as-of date of the calculations. Typically T-1.|
+| spread_lookback_15d_flag| boolean | false | Have all of the trading days in the last 15 calendar days from the as-of date experienced a bid-ask spread of 1% or more? |
+| spread_lookback_15d_gteq1pct_count| integer | 4 | # of trading days in the last 15 calendar days from the as-of date that have experienced a bid-ask spread of 1% of more.|
+| spread_lookback_15d_tradeday_count| integer | 11 | # of trading days in the last 15 calendar days|
+| spread_lookback_3m_flag| boolean | true | Have there been 30 or more trading days in the last 3 calendar months from the as-of date where the bid-ask spread was 1% or more? |
+| spread_lookback_3m_gteq1pct_count| integer | 35 | # of trading days in the last 3 calendar months where the bid-ask spread was 1% or more.|
+| spread_lookback_3m_start_date|  YYYY-MM-DD date | 2021-09-07 | The first date in the 3-month lookback window from the as-of date.|
+| spread_lookback_3m_tradeday_count| integer | 62 | # of trading days detected in the last 3 calendar months.|
+| spread_lookback_prev_quarter_count| integer | 64 | # of trading days in the last completed quarter.|
+| spread_lookback_prev_quarter_gteq1pct_count| integer | 27.0 | # of trading days in the last completed quarter where the bid-ask spread was 1% or more.|
+| spread_lookback_prev_quarter_gteq1pct_streak_count| integer | 4.0 | Maximum # of consecutive trading days in the last completed quarter where the bid-ask spread was 1% or more.|
+| spread_lookback_prev_quarter_gteq2pct_count| integer | 2.0 | # of trading days in the last completed quarter where bid-ask spread was 2% or more.|
+| spread_lookback_prev_quarter_last_date| YYYY-MM-DD date | 2021-09-30 | The last calendar day of the last completed quarter, for the purposes of all "prev_quarter" calculations.|
+| spread_lookback_prev_quarter_wide_spread_2pct_flag| boolean | true | Has there been at least one day in the last completed quarter where the bid-ask spread was 2% or more?|
+| spread_lookback_prev_quarter_wide_spread_persist_flag| boolean | false | Set to true if in the last completed quarter there were either 30 trading days or 15 consecutive trading days where the bid-ask spread was 1% or more.|
 
 
 The `spread_lookback_prev_quarter_` columns are based on ETFLogic's interpretation of points (2) and (b) below: 
