@@ -266,7 +266,7 @@ Returns quarterly and yearly premium-discount statistics per 6c-11 requirements.
 Spread threshold checks provide monitoring around spread widening for individual ETFs. Monitoring is conducted as of the previous trading day and the previous quarter. 
 There have been multiple interpretations of the legal text of the threshold checks which has resulted in multiple calculations. We explain the fields the function returns below. 
 
-All spreads are 
+Spreads for any given ticker and date are calculated by taking the median of daily 10-second bid-ask samples during regular market trading hours. The threshold calculations do not exactly specifiy how to calculate spreads. So we have borrowed the 10-second bid-ask sampling from the ETF Rule 6c-11. For a representative spread for a given ticker+date we have chosen to use the daily median as it is a more robust statistic than the daily average which can be distorted by market opens or closes. 
 
 | Field Key | Format | Example | Description |
 | -- | -- | -- | -- |
