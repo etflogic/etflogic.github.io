@@ -261,6 +261,34 @@ Returns quarterly and yearly premium-discount statistics per 6c-11 requirements.
 
 > Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=premium-discount-statistics`
 
+### /?function=spread-threshold-checks
+
+Spread threshold checks provide monitoring around spread widening for individual ETFs. Monitoring is conducted as of the previous trading day and the previous quarter. 
+There have been multiple interpretations of the legal text of the threshold checks which has resulted in multiple calculations. We explain the fields the function returns below. 
+
+| Field Key | Format | Example | Description |
+| ticker| text | NGE | |
+| asof_date| YYYY-MM-DD date | 2021-12-02 ||
+| spread_lookback_15d_flag| boolean | false ||
+| spread_lookback_15d_gteq1pct_count| integer | 4 ||
+| spread_lookback_15d_tradeday_count| integer | 11 ||
+| spread_lookback_3m_flag| boolean | true ||
+| spread_lookback_3m_gteq1pct_count| integer | 35 ||
+| spread_lookback_3m_start_date|  YYYY-MM-DD date | 2021-09-07 ||
+| spread_lookback_3m_tradeday_count| integer | 62 ||
+| spread_lookback_prev_quarter_count| integer | 64 ||
+| spread_lookback_prev_quarter_gteq1pct_count| integer | 27.0 ||
+| spread_lookback_prev_quarter_gteq1pct_streak_count| integer | 4.0 ||
+| spread_lookback_prev_quarter_gteq2pct_count| integer | 2.0 ||
+| spread_lookback_prev_quarter_last_date| YYYY-MM-DD date | 2021-09-30 ||
+| spread_lookback_prev_quarter_wide_spread_2pct_flag| boolean | true ||
+| spread_lookback_prev_quarter_wide_spread_persist_flag| boolean | false ||
+
+
+The `spread_lookback_prev_quarter_` columns are based on ETFLogic's interpretation of points (2) and (b) below: 
+
+> For at least the first three years after the launch of a Fund, the Adviser will promptly call a meeting of the Board (and will present to the Board for its consideration, recommendations for appropriate remedial measures) and the Board will promptly meet if any of the below thresholds are exceeded (each referred to herein as a “Threshold Breach”): (1) the Tracking Error exceeds 1%; (2) for 30 or more days in any quarter or 15 days in a row (a) the absolute difference between either the Closing Price or the Bid/Ask Price, on one hand, and NAV, on the other, exceeds 2%; or (b) the bid/ask spread exceeds 2%; or (3) as otherwise deemed necessary or appropriate by the Adviser.
+
 
 ## Examples
 
