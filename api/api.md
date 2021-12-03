@@ -267,6 +267,7 @@ Spread threshold checks provide monitoring around spread widening for individual
 There have been multiple interpretations of the legal text of the threshold checks which has resulted in multiple calculations. We explain the fields the function returns below. 
 
 | Field Key | Format | Example | Description |
+| -- | -- | -- | -- |
 | ticker| text | NGE | |
 | asof_date| YYYY-MM-DD date | 2021-12-02 ||
 | spread_lookback_15d_flag| boolean | false ||
