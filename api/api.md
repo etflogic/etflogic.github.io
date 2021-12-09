@@ -62,7 +62,7 @@ The following query parameters apply to all `function=<FUNCTION_NAME>` calls:
    * Optional
    * Format is `YYYY-MM-DD`
    * Description: The as-of date of the returned data. 
-   * Default: `date=<last available date>`, typically T-1
+   * Default: `date=<last available date>`, typically T-1 (the last trading day)
    * Functions: flows, premium-discount, spreads, total-return
 1. `date_gteq`
    * Optional
@@ -212,9 +212,7 @@ Returns ETF AUM and flows for the permissioned tickers.
 Returns 6c-11 premium-discount calculations for the permissioned tickers. 
 > Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=premium-discount`
 
-Additional parameters:
-* `date` - in YYYY.MM.DD format, defaulted to the last trading day
-* `date_gteq` in YYYY.MM.DD format, will return all data points greater-than or equal to this date. 
+This function returns time-series data. The `date` and `date_gteq` query parameters are accepted. See the query parameters section above for more details on how to format the values for these parameters. 
 
 ### /?function=spreads
 
@@ -222,9 +220,8 @@ Returns percentile and 6c-11 spread calculations for the permissioned tickers.
 
 > Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=spreads`
 
-Additional parameters:
-* `date` - in YYYY.MM.DD format, defaulted to the last trading day
-* `date_gteq` in YYYY.MM.DD format, will return all data points greater-than or equal to this date. 
+This function returns time-series data. The `date` and `date_gteq` query parameters are accepted. See the query parameters section above for more details on how to format the values for these parameters.  
+
 
 #### Field Definitions
 
