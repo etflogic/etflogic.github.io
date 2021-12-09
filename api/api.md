@@ -212,6 +212,9 @@ Returns ETF AUM and flows for the permissioned tickers.
 Returns 6c-11 premium-discount calculations for the permissioned tickers. 
 > Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=premium-discount`
 
+Additional parameters:
+* `date` - in YYYY.MM.DD format, defaulted to the last trading day
+* `date_gteq` in YYYY.MM.DD format, will return all data points greater-than or equal to this date. 
 
 ### /?function=spreads
 
@@ -219,7 +222,9 @@ Returns percentile and 6c-11 spread calculations for the permissioned tickers.
 
 > Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=spreads`
 
-
+Additional parameters:
+* `date` - in YYYY.MM.DD format, defaulted to the last trading day
+* `date_gteq` in YYYY.MM.DD format, will return all data points greater-than or equal to this date. 
 
 #### Field Definitions
 
@@ -260,6 +265,8 @@ Returns holdings statistics aggregated across many dimensions such as sector, ge
 Returns quarterly and yearly premium-discount statistics per 6c-11 requirements. Leverages the `function=premium-discount` time-series for its underlying data.
 
 > Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=premium-discount-statistics`
+
+
 
 ### /?function=spread-threshold-checks
 
