@@ -304,7 +304,7 @@ Returns a time-series of historical OHLC (open, high, low, close) prices and tra
 * `start_date` - the default is a 30-day lookback from today.
 * `end_date` - the default is today. 
 
-#### Sample JSON Paylaod
+#### Sample JSON Payload
 ```
 [
   {
@@ -332,7 +332,7 @@ Returns a sampled NBBO time-series between `start_date` and `end_date` with `int
 * `end_date` - the default is today.  
 * `interval` - in seconds, the default is 60 seconds.
 
-# Payload Schema
+#### Payload Schema
 * `ticker`: the exchange ticker
 * `bid_close`: the NBBO bid price at the closing of the interval sample time. 
 * `ask_close`: the NBBO ask or offer price at the closing of the interval sample time. 
@@ -340,7 +340,7 @@ Returns a sampled NBBO time-series between `start_date` and `end_date` with `int
 * `bid_size_largest`: the largest aggregate size on the bid, summed up across all exchanges within the interval sample time. Sizes are in lots.
 * `ts`: Timestamp in EST
 
-#### Sample JSON Paylaod
+#### Sample JSON Payload
 ```
 [
   {
