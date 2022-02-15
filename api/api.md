@@ -296,6 +296,74 @@ The `spread_lookback_prev_quarter_` columns are based on ETFLogic's interpretati
 
 > For at least the first three years after the launch of a Fund, the Adviser will promptly call a meeting of the Board (and will present to the Board for its consideration, recommendations for appropriate remedial measures) and the Board will promptly meet if any of the below thresholds are exceeded (each referred to herein as a “Threshold Breach”): (1) the Tracking Error exceeds 1%; (2) for 30 or more days in any quarter or 15 days in a row (a) the absolute difference between either the Closing Price or the Bid/Ask Price, on one hand, and NAV, on the other, exceeds 2%; or (b) the bid/ask spread exceeds 2%; or (3) as otherwise deemed necessary or appropriate by the Adviser.
 
+### /?function=price
+
+Returns a time-series of historical OHLC (open, high, low, close) prices and traded volumes for the selected tickers. All prices are corporate action adjusted as-of the time of retrieval. 
+
+#### Query Parameters
+* `start_date` - the default is a 30-day lookback from today.
+* `end_date` - the default is today. 
+
+#### Sample JSON Paylaod
+```
+[
+  {
+   "ticker": "SPY",
+   "mktclosedate": "2007-01-03T00:00:00Z",
+   "close": 108.15538399357428,
+   "high": 109.29531129180181,
+   "low": 107.54334249117022,
+   "open": 108.82862964621872,
+   "tradedvolume": 94846800.0
+  }
+ ]
+```
+
+> Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=price&ticker=SPY`
+
+### /?function=nbbo
+
+Returns a sampled NBBO time-series between `start_date` and `end_date` with `interval` seconds between each sample. Maximum date range can be up to 10 days. 
+
+
+
+#### Query Parameters
+* `start_date` - the default is a 3-day lookback from today.
+* `end_date` - the default is today.  
+* `interval` - in seconds, the default is 60 seconds.
+
+# Payload Schema
+* `ticker`: the exchange ticker
+* `bid_close`: the NBBO bid price at the closing of the interval sample time. 
+* `ask_close`: the NBBO ask or offer price at the closing of the interval sample time. 
+* `ask_size_largest`: the largest aggregate size on the offer, summed up across all exchanges within the interval sample time. Sizes are in lots.
+* `bid_size_largest`: the largest aggregate size on the bid, summed up across all exchanges within the interval sample time. Sizes are in lots.
+* `ts`: Timestamp in EST
+
+#### Sample JSON Paylaod
+```
+[
+  {
+    "ask_close": 439.94,
+    "ask_size_largest": 35,
+    "bid_close": 439.92,
+    "bid_size_largest": 32,
+    "ticker": "SPY",
+    "ts": "2022-02-14T11:58:00Z"
+  },
+  {
+    "ask_close": 440.11,
+    "ask_size_largest": 16,
+    "bid_close": 440.1,
+    "bid_size_largest": 24,
+    "ticker": "SPY",
+    "ts": "2022-02-14T11:59:00Z"
+  }
+ ]
+```
+
+> Example Call: GET request to `https://data.etflogic.io/test/?apikey=<YourAPIKey>&function=nbbo&ticker=SPY`
+
 
 ## Examples
 
